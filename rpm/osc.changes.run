@@ -1,0 +1,13 @@
+#!/usr/bin/git-change-log --script
+# vim: ft=sh:
+
+# This would be just enough if git-pkg was not used before
+#git-change-log --tags 'refs/tags/mer/*' --only-add-tagged --append-from NEWS
+
+git-change-log --tags 'refs/tags/mer/*' \
+               --only-add-tagged \
+               --rev-list-args='^mer-0.146.0-1' \
+               --append-from 'NEWS,notail'
+echo
+# Include old changelog from git-pkg times
+git-show 'pkg-mer-0.146.0-1:osc.changes'
